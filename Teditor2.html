@@ -45,12 +45,12 @@
             <!--.プレビュー部分-->
             <div id="twitterPreview">
                     <div class="title">twitterのプロフィール</div>
-                    <div class="kakuteigroup">
-                        <div class="kakuteicanvasgroup">
-                            <div><canvas id="kakuteiIconCanvas" ></canvas></div>
-                            <div><canvas id="kakuteiCanvas" ></canvas></div>  
+                    <div class="definegroup">
+                        <div class="definecanvasgroup">
+                            <div id="defineIconCanvas" ></div>
+                            <div id="defineCanvas" ></div>  
                         </div>
-                        <div class="kakuteibutton">
+                        <div class="definebutton">
                             <button id="dlbutton" class="output">画像をダウンロード</button>
                         </div>
                         
@@ -66,7 +66,7 @@
                 <tr>
                     <td><canvas id="sourceIconCanvas" ></canvas></td>
                     <td><canvas id="croppedIconCanvas"></canvas></td>
-                    <td><button>確定</button></td>
+                    <td><button id="cropIcon">切り取り</button></td>
                 </tr>
             </table>
             <table id="headerPreview">
@@ -78,7 +78,7 @@
                 <tr>
                     <td><canvas id="sourceCanvas" ></canvas></td>
                     <td><canvas id="croppedCanvas"></canvas></td>
-                    <td><button>確定</button></td>
+                    <td><button id ="cropHeader">切り取り</button></td>
                 </tr>
             </table>
             
