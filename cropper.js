@@ -61,9 +61,6 @@ const cropImageIcon = function (evt) {
                         }
                     }
                 });
-                const define = cropper1;
-                
-
             }
         }
         image.src = evt.target.result;
