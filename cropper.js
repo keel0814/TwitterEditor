@@ -18,7 +18,7 @@ const cropImageIcon = function (evt) {
     let reader = new FileReader();
     reader.onload = function (evt) {
         image.onload = function () {
-            let scale = scaledWidthIcon / image.width;
+            let scale = 1;
             let imageData = null;
             {
                 const canvas = document.getElementById("sourceIconCanvas");
@@ -86,7 +86,7 @@ const cropImageHeader = function (evt) {
     let reader = new FileReader();
     reader.onload = function (evt) {
         image.onload = function () {
-            let scale = scaledWidthHeader / image.width;
+            let scale = 1;
             let imageData = null;
             {
                 const canvas = document.getElementById("sourceCanvas");
