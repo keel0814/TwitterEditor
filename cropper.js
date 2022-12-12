@@ -69,9 +69,9 @@ const cropImageIcon = function (evt) {
 }
 
 document.getElementById('cropIcon').addEventListener('click', function () {
-  resultImgUrl = cropperIcon.getCroppedCanvas().toDataURL();
+  resultIconImgUrl = cropperIcon.getCroppedCanvas().toDataURL();
   var result = document.getElementById('defineIconCanvas');
-  result.src = resultImgUrl;
+  result.src = resultIconImgUrl;
 });
 
 
@@ -136,10 +136,30 @@ const cropImageHeader = function (evt) {
 }
 
 document.getElementById('cropHeader').addEventListener('click', function () {
-    resultImgUrl = cropperHeader.getCroppedCanvas().toDataURL();
+    resultHeaderImgUrl = cropperHeader.getCroppedCanvas().toDataURL();
     var result = document.getElementById('defineHeaderCanvas');
-    result.src = resultImgUrl;
-  });
+    result.src = resultHeaderImgUrl;
+});
+
+// アイコンダウンロード
+function downloadIcon(){
+    const url = resultIconImgUrl;
+    const fileName = 'icon.jpg';
+    
+    let link = document.getElementById("dlIcon");
+    link.href= url;
+    link.download = fileName;
+}
+
+// ヘッダーダウンロード
+function downloadHeader(){
+    const url = resultHeaderImgUrl;
+    const fileName = 'header.jpg';
+    
+    let link = document.getElementById("dlHeader");
+    link.href= url;
+    link.download = fileName;
+}
 
 // アイコン変換
 const uploaderIcon = document.getElementById('icon-uploader');
