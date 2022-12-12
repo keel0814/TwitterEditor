@@ -68,6 +68,13 @@ const cropImageIcon = function (evt) {
     reader.readAsDataURL(file);
 }
 
+document.getElementById('cropIcon').addEventListener('click', function () {
+  resultImgUrl = cropperIcon.getCroppedCanvas().toDataURL();
+  var result = document.getElementById('defineIconCanvas');
+  result.src = resultImgUrl;
+});
+
+
 // ヘッダー用画像変換メソッド
 const cropImageHeader = function (evt) {
     const files = evt.target.files;
@@ -127,6 +134,12 @@ const cropImageHeader = function (evt) {
     }
     reader.readAsDataURL(file);
 }
+
+document.getElementById('cropHeader').addEventListener('click', function () {
+    resultImgUrl = cropperHeader.getCroppedCanvas().toDataURL();
+    var result = document.getElementById('defineHeaderCanvas');
+    result.src = resultImgUrl;
+  });
 
 // アイコン変換
 const uploaderIcon = document.getElementById('icon-uploader');
