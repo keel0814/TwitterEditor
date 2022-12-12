@@ -61,7 +61,7 @@ const cropImageIcon = function (evt) {
                         }
                     }
                 });
-                const kakutei = cropper1;
+                const define = cropper1;
                 
 
             }
