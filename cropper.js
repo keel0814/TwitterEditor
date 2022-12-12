@@ -1,6 +1,6 @@
 
-let cropper1 = null;
-let cropper2 = null;
+let cropperHeader = null;
+let cropperIcon = null;
 const cropAspectRatioIcon = 1.0 / 1.0;
 const scaledWidthIcon = 100;
 const cropAspectRatioHeader = 3.0 / 1.0;
@@ -28,11 +28,11 @@ const cropImageIcon = function (evt) {
                     canvas.height = image.height * scale;
                     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
                 }
-                if (cropper2 != null) {
+                if (cropperIcon != null) {
                     // 画像を再読み込みした場合は破棄が必要
-                    cropper2.destroy();
+                    cropperIcon.destroy();
                 }
-                cropper2 = new Cropper(canvas, {
+                cropperIcon = new Cropper(canvas, {
                     //画像の移動,拡大・縮小,ズーム
                     aspectRatio: cropAspectRatioIcon,
                     viewmode: 1,
@@ -61,7 +61,7 @@ const cropImageIcon = function (evt) {
                         }
                     }
                 });
-                const define = cropper1;
+                const define = cropperHeader;
                 
 
             }
@@ -92,11 +92,11 @@ const cropImageHeader = function (evt) {
                     canvas.height = image.height * scale;
                     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
                 }
-                if (cropper1 != null) {
+                if (cropperHeader != null) {
                     // 画像を再読み込みした場合は破棄が必要
-                    cropper1.destroy();
+                    cropperHeader.destroy();
                 }
-                cropper1 = new Cropper(canvas, {
+                cropperHeader = new Cropper(canvas, {
                     //画像の移動,拡大・縮小,ズーム
                     aspectRatio: cropAspectRatioHeader,
                     viewmode: 1,
