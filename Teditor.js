@@ -17,6 +17,9 @@ document.getElementById('IconStampTemplate').style.display = "none";
 document.getElementById('HeaderStampTemplate').style.display = "none";
 document.getElementById('textTemplate').style.display = "none";
 document.getElementById('etcTemplate').style.display = "none";
+//決定ボタンの表示
+document.getElementById('cropIcon').style.display = "none";
+document.getElementById('cropHeader').style.display = "none";
 
 function buttonClick(){
   radio = document.getElementsByName('accessible-radio') 
@@ -36,6 +39,14 @@ function buttonClick(){
     document.getElementById('iconSection').style.display = "none";
     document.getElementById('headerSection').style.display = "none";
 
+    //ダウンロードボタンの表示
+    document.getElementById('dlIcon').style.display = "";
+    document.getElementById('dlHeader').style.display = "";
+
+    //決定ボタンの表示
+    document.getElementById('cropIcon').style.display = "none";
+    document.getElementById('cropHeader').style.display = "none";
+
 
     //iconボタンを押したとき
   }else if(radio[1].checked) {
@@ -51,6 +62,13 @@ function buttonClick(){
     document.getElementById('iconSection').style.display = "";
     document.getElementById('headerSection').style.display = "none";
 
+    //ダウンロードボタンの表示
+    document.getElementById('dlIcon').style.display = "none";
+    document.getElementById('dlHeader').style.display = "none";
+
+    //決定ボタンの表示
+    document.getElementById('cropIcon').style.display = "";
+    document.getElementById('cropHeader').style.display = "none";
 
     //ヘッダーボタンを押したとき
   }else if(radio[2].checked) {
@@ -66,6 +84,13 @@ function buttonClick(){
     document.getElementById('iconSection').style.display = "none";
     document.getElementById('headerSection').style.display = "";
 
+    //ダウンロードボタンの表示
+    document.getElementById('dlIcon').style.display = "none";
+    document.getElementById('dlHeader').style.display = "none";
+
+    //決定ボタンの表示
+    document.getElementById('cropIcon').style.display = "none";
+    document.getElementById('cropHeader').style.display = "";    
   }
 }
 

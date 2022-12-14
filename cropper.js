@@ -8,7 +8,7 @@ const scaledWidthHeader = 110;
 
 
 // アイコン用画像変換メソッド
-const cropImageIcon = function (evt) {
+const cropImageIcon =  (evt) =>{
     const files = evt.target.files;
     if (files.length == 0) {
         return;
@@ -16,8 +16,8 @@ const cropImageIcon = function (evt) {
     let file = files[0];
     let image = new Image();
     let reader = new FileReader();
-    reader.onload = function (evt) {
-        image.onload = function () {
+    reader.onload = (evt) =>{
+        image.onload = () =>{
             let scale = 1;
             let imageData = null;
             {
@@ -68,15 +68,15 @@ const cropImageIcon = function (evt) {
     reader.readAsDataURL(file);
 }
 
+// cropしたアイコンの画像をtwitterプレビューに反映する
 document.getElementById('cropIcon').addEventListener('click', function () {
   resultIconImgUrl = cropperIcon.getCroppedCanvas().toDataURL();
   var result = document.getElementById('defineIconCanvas');
   result.src = resultIconImgUrl;
 });
 
-
 // ヘッダー用画像変換メソッド
-const cropImageHeader = function (evt) {
+const cropImageHeader = (evt) => {
     const files = evt.target.files;
     if (files.length == 0) {
         return;
@@ -84,8 +84,8 @@ const cropImageHeader = function (evt) {
     let file = files[0];
     let image = new Image();
     let reader = new FileReader();
-    reader.onload = function (evt) {
-        image.onload = function () {
+    reader.onload =(evt) =>{
+        image.onload = () =>{
             let scale = 1;
             let imageData = null;
             {
@@ -135,11 +135,38 @@ const cropImageHeader = function (evt) {
     reader.readAsDataURL(file);
 }
 
-document.getElementById('cropHeader').addEventListener('click', function () {
+// cropしたヘッダーの画像をtwitterプレビューに反映する
+document.getElementById('cropHeader').addEventListener('click',  () => {
     resultHeaderImgUrl = cropperHeader.getCroppedCanvas().toDataURL();
     var result = document.getElementById('defineHeaderCanvas');
     result.src = resultHeaderImgUrl;
 });
+
+//templateの各ボタンクリック時に実行
+function tempBtn(){
+
+}
+document.getElementById('icon frame').addEventListener('click',  () =>{
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    context.drawImage( img , 50 , 50 );
+
+    //表示・非表示を切り替える要素を取得
+    var img = document.getElementById("image_file");
+    img.src = "img/image1.png";
+    changeElement(img);
+
+    context.textBaseline = "top";
+    context.fillText( "0,0" , 0 , 0 );
+}, false);
+
+//"btn1"というIDを取得して、クリックしたらfunctionを実行する
+document.getElementById("btn1").onclick = function(){
+    //"pics"というIDを取得して、そのsrcを"img/arupaka.png"に変更する
+    document.getElementById("pics").src="img/arupaka.png";
+}
+
+
 
 // アイコンダウンロード
 function downloadIcon(){
