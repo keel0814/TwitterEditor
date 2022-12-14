@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Twitterヘッダーアイコンエディタ</title>
+        <link rel="stylesheet" href="Teditor.css">
+        <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+        
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+
+        <link  href="/path/to/cropper.css" rel="stylesheet">
+        <script src="/path/to/cropper.js"></script>
+    </head>
+<body onload="loadImage('edit');">
+    <div>
+        <div>
+            <h1>Twitterヘッダーアイコンエディタ</h1>
+            <p>アイコン・ヘッダーごとに画像を選択し、ツールからテンプレートを選んで加工編集して下さい。</p>
+            <p>ブラウザ上でTwitterに使うヘッダーとアイコンの編集を行うことが出来ます。
+            Twitterボタンを押すと実際のプロフィールが見れます
+            アイコン・ヘッダーボタンでそれぞれのカスタマイズが出来ます</p>
+            <p></p>
+        </div>
+        <div>
+            <div class="button-group">
+                <input id="twitter" class="buttonList" type="radio" name="accessible-radio"  onclick="buttonClick();" checked="checked"/>
+                <label class="radio-label" for="twitter">
+                twitter</label>
+        
+                <input id="icon" class="buttonList" type="radio" name="accessible-radio" onclick="buttonClick();" />
+                <label class="radio-label" for="icon">
+                アイコン</label>
+        
+                <input id="header" class="buttonList" type="radio" name="accessible-radio" onclick="buttonClick();"/>
+                <label class="radio-label" for="header">
+                ヘッダー</label>
+                
+                <label class="icon file-label" id="iconFile">
+                    <input type="file" value="icon" id="icon-uploader"name="src-img" accept="image/*">アイコンを選択
+                </label>
+                <label class="header file-label" id="headerFile">
+                    <input type="file" value="header" id="header-uploader"name="src-img" accept="image/*">ヘッダーを選択
+                </label>
+
+                <a onclick="downloadIcon()" id="dlIcon" class="btn btn-icon">アイコンをDL</a>
+                <a onclick="downloadHeader()" id="dlHeader" class="btn btn-header">ヘッダーをDL</a>
+
+                <button id="cropIcon" class="crop">アイコンを決定</button>
+                <button id ="cropHeader" class="crop">ヘッダーを決定</button>
+            </div>
+            <div class="inner">
+                <div class="left">
+                    <!--.プレビュー部分-->
+                    <div id="twitterPreview">
+                            <div class="title">twitterのプロフィール</div>
+                            <div class="definegroup">
+                                <div class="definecanvasgroup">
+                                    <img id="defineIconCanvas" >
+                                    <img id="defineHeaderCanvas" >
+                                </div>          
+                            </div>
+                    </div>
+                    <table id="iconPreview">
+                        <tr>
+                            <th class="a">アイコン元画像</th>
+                            <th class="b">アイコンクロップ後の画像</th>
+                        </tr>
+                        <tr>
+                            <td><canvas id="sourceIconCanvas" ></canvas></td>
+                            <td><canvas id="croppedIconCanvas"></canvas></td>
+
+                        </tr>
+                    </table>
+                    <table id="headerPreview">
+                        <tr>
+                            <th class="a">ヘッダー元画像</th>
+                            <th class="b">ヘッダークロップ後の画像</th>
+                        </tr>
+                        <tr>
+                            <td><canvas id="sourceCanvas" ></canvas></td>
+                            <td><canvas id="croppedCanvas"></canvas></td>
+                        </tr>
+                    </table>
+                    
+        
+                    <!--2.テンプレート部分-->
+        
+                    <!--空のツテンプレート-->      
+                    <div id="Empty" class="empty"></div>
+        
+                    <!--フレームツール-->
+                    <div id="IconFrameTemplate" class="icon frame template">
+                        <button id="btn1" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">額縁</div>
+                        </button>
+                        <button id="btn2" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンフレーム2</div>
+                        </button>
+                        <button id="btn3" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンフレーム3</div>
+                        </button>
+                        <button id="btn4" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンフレーム4</div>
+                        </button>
+                    </div>
+                    <div id="HeaderFrameTemplate" class="header frame template">
+                        <button id="btn5" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダーフレーム1</div>
+                        </button>
+                        <button id="btn6" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダーフレーム2</div>
+                        </button>
+                        <button id="btn7" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダーフレーム3</div>
+                        </button>
+                        <button id="btn8" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダーフレーム4</div>
+                        </button>
+                    </div>
+        
+                    <!--スタンプツール--> 
+                    <div id="IconStampTemplate" class="icon stamp template">
+                        <button id="btn9" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンスタンプ1</div>
+                        </button>
+                        <button id="btn10" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンスタンプ2</div>
+                        </button>
+                        <button id="btn11" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンスタンプ3</div>
+                        </button>
+                        <button id="btn12" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">アイコンスタンプ4</div>
+                        </button>
+                    </div>
+                    <div id="HeaderStampTemplate" class="header stamp template">
+                        <button id="header stamp" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダースタンプ1</div>
+                        </button>
+                        <button id="header stamp" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダースタンプ2</div>
+                        </button>
+                        <button id="header stamp" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダースタンプ3</div>
+                        </button>
+                        <button id="header stamp" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">ヘッダースタンプ4</div>
+                        </button>
+                    </div>
+        
+                    <!--テキストツール-->   
+                    <div id="textTemplate" class="text template">
+                        <!--ヒラノギ角ゴシック-->
+                        <button id="frame" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">あア安</div>
+                        </button>
+                        <!--游游ゴシック-->
+                        <button id="frame" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">あア安</div>
+                        </button>
+                        <!--筑紫ゴシック-->
+                        <button id="frame" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">あア安</div>
+                        </button>
+                        <!--游明朝体-->
+                        <button id="frame" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">あア安</div>
+                        </button>
+                        <!--Noto Serif-->
+                        <button id="frame" class="frame-group">
+                            <div class="tool-img"></div>
+                            <div class="tool-name">あア安</div>
+                        </button>
+                        <!--テキスト入力-->
+                        <div class="frame-group">
+                            <input type="text" id="canvas_text" value="テキスト">
+                            <button onclick="drawText('canvas_text');">文字を描く</button>
+                        </div>
+                    
+                </div>
+                    <!--その他ツール-->   
+                <div id="etcTemplate" class="etc template">
+                    <div class="">^=^</div>
+                </div>
+            </div>
+            
+            <!--空のセクション-->       
+            <div id="twitterSection" class="twitter section"></div>
+            <!--ツール部分  アイコンツール 最初は非表示-->
+            <div id="iconSection" class="icon section" >
+                <div class="toolTitle">アイコンツール</div>
+                <div class="tool">
+                    <input id="iconFrame" class="toolList" type="radio" name="iconToolRadio" onclick="toolClick();" />
+                    <label class="toolLabel" for="iconFrame">フレーム</label>
+                </div>  
+                <div class="tool">
+                    <input id="iconStamp" class="toolList" type="radio" name="iconToolRadio" onclick="toolClick();" />
+                    <label class="toolLabel" for="iconStamp">スタンプ</label>
+                </div>
+                <div  class="tool">
+                    <input id="iconText" class="toolList" type="radio" name="iconToolRadio" onclick="toolClick();" />
+                    <label class="toolLabel" for="iconText">テキスト</label>
+                </div>
+                <div  class="tool">
+                    <input id="iconEtc" class="toolList" type="radio" name="iconToolRadio" onclick="toolClick();" />
+                    <label class="toolLabel" for="iconEtc">その他</label>
+                </div>
+            </div>
+            <!--5.ツール部分  ヘッダーツール 最初は非表示-->
+            <div id="headerSection" class="header section">
+                <div class="toolTitle">ヘッダーツール</div>
+                <div  class="tool">
+                    <input id="headerFrame" class="toolList" type="radio" name="headerToolRadio" onclick="toolHeaderClick();" />
+                    <label class="toolLabel" for="headerFrame">フレーム</label>
+                </div>
+                <div  class="tool">
+                    <input id="headerStamp" class="toolList" type="radio" name="headerToolRadio" onclick="toolHeaderClick();" />
+                    <label class="toolLabel" for="headerStamp">スタンプ</label>
+                </div>
+                <div  class="tool">
+                    <input id="headerText" class="toolList" type="radio" name="headerToolRadio" onclick="toolHeaderClick();" />
+                    <label class="toolLabel" for="headerText">テキスト</label>
+                </div>
+                <div  class="tool">
+                    <input id="headerEtc" class="toolList" type="radio" name="headerToolRadio" onclick="toolHeaderClick();" />
+                    <label class="toolLabel" for="headerEtc">その他</label>
+                </div>
+            </div>
+        </div> 
+        </div>
+        <script src="Teditor.js"></script> 
+        <script src="cropper.js"></script>
+
+        </div>
+    </div>
+    
+    
+    
+
+</body>
+</html>
