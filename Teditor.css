@@ -166,9 +166,7 @@ th{
     background-color:lightgray;
     margin-top:40px;
 }
-.frame-group{
-    display: inline-flex;
-    justify-content:space-around;
+.frame-group{    
     text-align: center;
     margin: 10px 2px 2px 10px;
     width: 110px;

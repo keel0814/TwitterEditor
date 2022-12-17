@@ -115,17 +115,17 @@ function toolClick(){
     document.getElementById('Empty').style.display = "none";
     document.getElementById('IconFrameTemplate').style.display = "none";
     document.getElementById('HeaderFrameTemplate').style.display = "none";
-    document.getElementById('IconStampTemplate').style.display = "none";
-    document.getElementById('HeaderStampTemplate').style.display = "";
+    document.getElementById('IconStampTemplate').style.display = "";
+    document.getElementById('HeaderStampTemplate').style.display = "none";
     document.getElementById('textTemplate').style.display = "none";
     document.getElementById('etcTemplate').style.display = "none";
 
     //ヘッダーボタンを押したとき
   }else if(tool[2].checked) {
     //iconテンプレートを表示
-    document.getElementById('Empty').style.display = "none";
+    document.getElementById('Empty').style.display = "";
     document.getElementById('IconFrameTemplate').style.display = "none";
-    document.getElementById('HeaderFrameTemplate').style.display = "";
+    document.getElementById('HeaderFrameTemplate').style.display = "none";
     document.getElementById('IconStampTemplate').style.display = "none";
     document.getElementById('HeaderStampTemplate').style.display = "none";
     document.getElementById('textTemplate').style.display = "none";
@@ -133,13 +133,13 @@ function toolClick(){
 
   }else if(tool[3].checked) {
     //iconテンプレートを表示
-    document.getElementById('Empty').style.display = "none";
+    document.getElementById('Empty').style.display = "";
     document.getElementById('IconFrameTemplate').style.display = "none";
     document.getElementById('HeaderFrameTemplate').style.display = "none";
     document.getElementById('IconStampTemplate').style.display = "none";
     document.getElementById('HeaderStampTemplate').style.display = "none";
     document.getElementById('textTemplate').style.display = "none";
-    document.getElementById('etcTemplate').style.display = "";
+    document.getElementById('etcTemplate').style.display = "none";
 
   }
 }
@@ -183,13 +183,13 @@ function toolHeaderClick(){
     //その他ボタンを押したとき
   }else if(toolH[3].checked) {
     //headerその他テンプレートを表示
-    document.getElementById('Empty').style.display = "none";
+    document.getElementById('Empty').style.display = "";
     document.getElementById('IconFrameTemplate').style.display = "none";
     document.getElementById('HeaderFrameTemplate').style.display = "none";
     document.getElementById('IconStampTemplate').style.display = "none";
     document.getElementById('HeaderStampTemplate').style.display = "none";
     document.getElementById('textTemplate').style.display = "none";
-    document.getElementById('etcTemplate').style.display = "";
+    document.getElementById('etcTemplate').style.display = "none";
 
   }
 }
